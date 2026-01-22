@@ -8,6 +8,21 @@ This document provides **all technical and operational guidance** for running, d
 
 This project converts a static hotel facility website into a **full-stack academic project** with Node.js/Express backend connected to MongoDB.
 
+## Prerequisites
+
+- **Node.js** version **18.x or later** (LTS recommended) must be installed on your machine.
+- **npm** is included with Node.js and will be used to manage dependencies.
+
+You can verify your Node.js version by running:
+
+```bash
+node -v
+```
+
+If Node.js is not installed or your version is below 18, please install the latest LTS version before proceeding.
+
+---
+
 ### Core Resources
 
 | Resource     | Description                               | Access Control                 |
@@ -72,10 +87,10 @@ Start development:
 
 ```bash
 npm run dev   # run for daily dev use
-npm start     # run only in production mode
+npm start     # run only in production mode; should be run when deployed in cloud only
 npm run seed:users # seed initial users (dev only; read seeder/usersSeeder.js)
 npm run seed:clear # delete all users (dev only; read seeder/deleteAllUsers.js)
-npm run test # on progress
+npm run test # on progress; no test environment yet
 
 ```
 
