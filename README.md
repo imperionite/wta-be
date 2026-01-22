@@ -3,6 +3,7 @@
 This project is the **backend extension** of the Skye Suites static hotel website (HTML/CSS/JS). It provides **dynamic features** such as booking management, contact handling, and subscriptions using a Node.js/Express API connected to MongoDB.
 
 For technical version of this document, see [README-TECHNICAL](https://github.com/imperionite/wta-be/blob/main/README-TECHNICAL.md)
+
 ---
 
 ## Overview
@@ -44,4 +45,3 @@ This backend is **decoupled from the frontend** to allow focused learning in Nod
 - Extend the existing static frontend with dynamic backend integration
 - Teach backend development to all group members
 - Provide **portfolio-ready exposure** to API design, authentication, and data management
-
