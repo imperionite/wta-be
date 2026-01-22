@@ -58,3 +58,12 @@ exports.cancelBooking = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
+
+/**
+ * Notes:
+ * - Validate required fields
+ * - Ensure user & room references are correct
+ * - Apply role-based access control (RBAC)
+ * - Respond with proper status codes and JSON
+ 
+ */
