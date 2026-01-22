@@ -37,7 +37,7 @@ exports.register = async (req, res) => {
     // Create JWT
     const access = jwt.sign(
       {
-        sub: newUser._id,
+        sub: newUser._id.toString(),
         email: newUser.email,
         role: newUser.role,
       },
@@ -73,8 +73,9 @@ exports.login = async (req, res) => {
     }
 
     const access = jwt.sign(
-      { id: user._id, email: user.email, role: user.role },
+      { id: user._id.toString(), email: user.email, role: user.role },
       config.jwtSecret,
+      { expiresIn: "1h" },
     );
 
     res.json({

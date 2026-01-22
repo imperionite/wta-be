@@ -35,4 +35,22 @@ userSchema.methods.comparePassword = async function (candidatePassword) {
   return bcrypt.compare(candidatePassword, this.password);
 };
 
+/**
+ * toJSON transform
+ * - Replace _id with id
+ * - Remove password and __v
+ * - Prevent MongoDB-specific fields leaking to frontend
+ * - This affects res.json(), not database documents
+ * - Internally, _id is still used everywhere
+ */
+
+userSchema.set("toJSON", {
+  transform: (doc, ret) => {
+    ret.id = ret._id.toString();
+    delete ret._id;
+    delete ret.__v;
+    delete ret.password;
+  },
+});
+
 module.exports = mongoose.model("User", userSchema);

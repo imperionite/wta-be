@@ -12,6 +12,7 @@ const connectDB = require("./config/db");
 
 const authRouter = require("./routes/auth");
 const userRouter = require("./routes/user");
+const roomRouter = require("./routes/room");
 
 const app = express();
 
@@ -36,6 +37,7 @@ app.use(logger("combined"));
 // Routes
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
+app.use("/api/rooms", roomRouter);
 
 // 404 handler
 app.use((req, res, next) => {

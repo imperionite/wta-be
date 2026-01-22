@@ -1,0 +1,227 @@
+# Project Technical Documentation
+
+This document provides **all technical and operational guidance** for running, developing, and extending the Skye Suites Dynamic Hotel Facility backend API.
+
+---
+
+## Project Overview
+
+This project converts a static hotel facility website into a **full-stack academic project** with Node.js/Express backend connected to MongoDB.
+
+### Core Resources
+
+| Resource     | Description                               | Access Control                 |
+| ------------ | ----------------------------------------- | ------------------------------ |
+| Users        | Register, login, manage profiles          | Users / Admin                  |
+| Bookings     | Manage reservations and room availability | Protected (Users/Admin)        |
+| Contact      | Submit messages                           | Public POST / Admin GET        |
+| Subscription | Newsletter sign-ups                       | Public POST / Admin GET/DELETE |
+| Rooms        | CRUD for hotel rooms                      | Admin only                     |
+
+---
+
+## Folder Structure
+
+```
+
+project/
+│
+├─ models/          # Mongo schemas (User, Booking, Contact, Subscription, Room)
+├─ controllers/     # Business logic for each resource
+├─ routes/          # Express routes per resource
+├─ config/          # DB, environment, and Passport configuration
+├─ seeders/         # Seed/delete scripts for development
+├─ public/          # Static assets
+├─ app.js           # Express app setup
+└─ server.js        # Server entrypoint
+
+```
+
+**Note:** Scaffold layers/files are **locked**. Group members add features in new files only.
+
+---
+
+## Environment Variables
+
+🌱 Create `.env` (Important):
+
+```bash
+NODE_ENV=development
+PORT=3000
+MONGO_URI=connection string from your Mongo Atlas or the provided one
+JWT_SECRET=your_jwt_secret_here_create_your_own
+FRONTEND_URL=http://localhost:5173 # real frontend URL to be used
+```
+
+- `NODE_ENV`: `development`, `production`, `test`
+- `MONGO_URI`: MongoDB connection string
+- `JWT_SECRET`: JWT secret
+- `FRONTEND_URL`: Frontend URL for CORS
+
+---
+
+## Installation & Running
+
+```bash
+git clone https://github.com/imperionite/wta-be.git
+cd wta-be
+npm install
+```
+
+Start development:
+
+```bash
+npm run dev   # run for daily dev use
+npm start     # run only in production mode
+npm run seed:users # seed initial users (dev only; read seeder/usersSeeder.js)
+npm run seed:clear # delete all users (dev only; read seeder/deleteAllUsers.js)
+npm run test # on progress
+
+```
+
+---
+
+## **Locked Scaffold Files**
+
+❌ DO NOT EDIT THESE FILES WITHOUT PERMISSION
+
+### **A. Models**
+
+- `models/User.js` → User schema with password hashing, comparePassword method, JWT-ready.
+- `models/Room.js` → Room schema with full CRUD-ready API (already working).
+
+---
+
+### **B. Controllers**
+
+- `controllers/auth.controller.js` → register & login functions, JWT creation.
+- `controllers/user.controller.js` → getProfile function.
+
+---
+
+### **C. Routes**
+
+- `routes/auth.js` → `/register` and `/login`.
+- `routes/user.js` → `/profile` (JWT-protected).
+
+---
+
+### **D. Seeder Scripts**
+
+- `seeder/usersSeeder.js` → seed default users.
+- `seeder/deleteAllUsers.js` → delete all users in dev.
+
+---
+
+### **E. Config & DB**
+
+- `config/config.js` → all environment variables and defaults.
+- `config/db.js` → MongoDB connection with in-memory option for testing.
+- `.env.example` → **to be provided for group members** (see below).
+
+---
+
+### **F. Middleware & Auth**
+
+- `config/passport.js` → JWT strategy (Google OAuth commented out).
+
+---
+
+### **G. App Entry**
+
+- `app.js` → Express app with middleware, routes, 404 & error handlers.
+
+📌 These files define how the system fits together. Changing them affects everyone.
+
+---
+
+## Authentication & JWT
+
+- JWT payload uses `id` (not `_id`) to simplify frontend usage.
+- All API responses expose `id` instead of `_id`.
+- Passport JWT strategy uses `payload.id`.
+
+**Example JWT Payload:**
+
+```json
+{
+  "id": "65a9e3b8c4f1e23456789abc",
+  "email": "user1@example.com",
+  "role": "user"
+}
+```
+
+---
+
+## Role-Based Access Control (RBAC)
+
+- **User:** Own bookings, profile
+- **Admin:** Manage all bookings, rooms, messages, subscriptions
+- **Public:** Submit contact or subscription messages
+
+Example check:
+
+```js
+if (req.user.role !== "admin") {
+  return res.status(403).json({ message: "Forbidden" });
+}
+```
+
+---
+
+## API Conventions
+
+- Standard REST endpoints
+- `id` replaces `_id` in responses
+- Passwords never returned
+- Consistent error handling:
+
+```json
+{ "message": "Detailed error message" }
+```
+
+- Status codes: 200, 201, 400, 401, 403, 404, 500
+
+---
+
+## Frontend Integration
+
+- Use `user.id`, `booking.id`, `contact.id`, `subscription.id`
+- JWT in `Authorization: Bearer <token>`
+- Example fetch:
+
+```js
+const token = localStorage.getItem("accessToken");
+const res = await fetch("http://localhost:3000/api/users/profile", {
+  headers: { Authorization: `Bearer ${token}` },
+});
+const data = await res.json();
+console.log(data.id, data.email, data.role);
+```
+
+---
+
+## Limitations & Flexibility
+
+- Beginner-friendly backend scope; some features may be simplified
+- Time constraints may limit third-party API integrations
+- Free cloud storage may limit scalability
+- Testing coverage may vary
+
+---
+
+## Testing
+
+- `NODE_ENV=test` + MongoMemoryServer for automated tests
+- Seeders optional in tests
+- Postman + Jest recommended
+
+---
+
+## Notes for Contributors
+
+- Scaffold files are **locked**
+- New resources/features should follow REST + RBAC conventions
+- Use `id` for all frontend communication
+- Contact & subscription forms **do not need real email sending**, mock is acceptable
+- Booking system is protected; advanced endpoints can be assigned to two members if needed
