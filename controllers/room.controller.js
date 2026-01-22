@@ -24,7 +24,7 @@ exports.getRoomById = async (req, res) => {
 // Create new room (Admin only)
 exports.createRoom = async (req, res) => {
   try {
-    // TODO: Ensure only admin can create a room (use RBAC middleware)
+    // Ensure only admin can create a room (use RBAC middleware)
     const { roomNumber, type, price, description, images } = req.body;
     const room = await Room.create({ roomNumber, type, price, description, images });
     res.status(201).json(room);

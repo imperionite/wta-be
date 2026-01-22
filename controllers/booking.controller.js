@@ -1,11 +1,18 @@
 const Booking = require("../models/Booking");
 
 /**
+ * Notes:
+ * - Validate all fields if necessary
+ * - Implementing Authentication and RBAC not yet required
+ * - Respond with proper status codes and JSON
+ * - Provide meaningful comments (not heavy formatted) to your code
+ */
+
+/**
  * TODO: createBooking
  * --------------------------------
- * USER ONLY
- * - User must be authenticated
- * - Validate dates
+ *
+ * - Validate request body
  * - Save booking
  */
 exports.createBooking = async (req, res) => {
@@ -19,8 +26,8 @@ exports.createBooking = async (req, res) => {
 /**
  * TODO: getMyBookings
  * --------------------------------
- * USER ONLY
- * - Fetch bookings for logged-in user
+ *
+ * - Fetch booking by user ID
  */
 exports.getMyBookings = async (req, res) => {
   try {
@@ -33,12 +40,10 @@ exports.getMyBookings = async (req, res) => {
 /**
  * TODO: getAllBookings
  * --------------------------------
- * ADMIN ONLY
+ *
  */
 exports.getAllBookings = async (req, res) => {
   try {
-    // TODO: RBAC
-    // TODO: fetch
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -47,9 +52,7 @@ exports.getAllBookings = async (req, res) => {
 /**
  * TODO: cancelBooking
  * --------------------------------
- * USER or ADMIN
- * - User can cancel own booking
- * - Admin can cancel any booking
+ * - Delete booking by ID
  */
 exports.cancelBooking = async (req, res) => {
   try {
@@ -58,12 +61,3 @@ exports.cancelBooking = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
-
-/**
- * Notes:
- * - Validate required fields
- * - Ensure user & room references are correct
- * - Apply role-based access control (RBAC)
- * - Respond with proper status codes and JSON
- 
- */

@@ -1,6 +1,14 @@
 const ContactMessage = require("../models/Contact");
 
 /**
+ * Notes:
+ * - Validate all fields if necessary
+ * - Implementing Authentication and RBAC not yet required
+ * - Respond with proper status codes and JSON
+ * - Provide meaningful comments (not heavy formatted) to your code
+ */
+
+/**
  * TODO: createContactMessage
  * --------------------------------
  * PUBLIC
@@ -21,14 +29,11 @@ exports.createContactMessage = async (req, res) => {
 /**
  * TODO: getAllContactMessages
  * --------------------------------
- * ADMIN ONLY
- * - Only allow users with role === "admin"
  * - Fetch all contact messages
  * - Sort by newest first
  */
 exports.getAllContactMessages = async (req, res) => {
   try {
-    // TODO: RBAC check
     // TODO: fetch messages
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -38,13 +43,11 @@ exports.getAllContactMessages = async (req, res) => {
 /**
  * TODO: markMessageAsRead
  * --------------------------------
- * ADMIN ONLY
  * - Mark a contact message as "read"
  * - Message ID comes from req.params.id
  */
 exports.markMessageAsRead = async (req, res) => {
   try {
-    // TODO: RBAC check
     // TODO: update message status
   } catch (error) {
     res.status(400).json({ message: error.message });

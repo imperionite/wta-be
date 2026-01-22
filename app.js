@@ -13,6 +13,9 @@ const connectDB = require("./config/db");
 const authRouter = require("./routes/auth");
 const userRouter = require("./routes/user");
 const roomRouter = require("./routes/room");
+const contactRouter = require("./routes/contact");
+const subscriptionRouter = require("./routes/subscription");
+const bookingRouter = require("./routes/booking");
 
 const app = express();
 
@@ -38,6 +41,9 @@ app.use(logger("combined"));
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
 app.use("/api/rooms", roomRouter);
+app.use("/api/contact", contactRouter);
+app.use("/api/subscription", subscriptionRouter);
+app.use("/api/booking", bookingRouter);
 
 // 404 handler
 app.use((req, res, next) => {

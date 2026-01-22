@@ -1,6 +1,14 @@
 const Subscription = require("../models/Subscription");
 
 /**
+ * Notes:
+ * - Validate all fields if necessary
+ * - Implementing Authentication and RBAC not yet required
+ * - Respond with proper status codes and JSON
+ * - Provide meaningful comments (not heavy formatted) to your code
+ */
+
+/**
  * TODO: subscribe
  * --------------------------------
  * PUBLIC
@@ -34,12 +42,10 @@ exports.unsubscribe = async (req, res) => {
 /**
  * TODO: getAllSubscriptions
  * --------------------------------
- * ADMIN ONLY
  * - Fetch all subscriptions
  */
 exports.getAllSubscriptions = async (req, res) => {
   try {
-    // TODO: RBAC
     // TODO: fetch
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -49,13 +55,11 @@ exports.getAllSubscriptions = async (req, res) => {
 /**
  * TODO: sendNewsletter
  * --------------------------------
- * ADMIN ONLY
  * - Simulate sending newsletter
  * - console.log number of recipients
  */
 exports.sendNewsletter = async (req, res) => {
   try {
-    // TODO: RBAC
     // TODO: simulate sending
   } catch (error) {
     res.status(400).json({ message: error.message });
