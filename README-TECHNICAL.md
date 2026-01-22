@@ -86,8 +86,8 @@ npm install
 Start development:
 
 ```bash
-npm run dev   # run for daily dev use
-npm start     # run only in production mode; should be run when deployed in cloud only
+npm run dev   # run for daily development use
+npm start     # should be run when deployed in cloud only as a start script; never run this locally
 npm run seed:users # seed initial users (dev only; read seeder/usersSeeder.js)
 npm run seed:clear # delete all users (dev only; read seeder/deleteAllUsers.js)
 npm run test # on progress; no test environment yet
