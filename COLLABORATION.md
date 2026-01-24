@@ -2,7 +2,7 @@
 
 ## 🪬 Core Collaboration Rules
 
-1. **Never commit directly to `main`.**
+1. **Never commit directly to your `local main` but ensure it is alawys ensync with the `remote main`.**
 2. **Always create a feature branch** for your work.
 3. **Name your branch using the scope and your first name** (e.g., `feature/arnel-auth-resource`).
 4. Write **clear PR descriptions**. Explain what changed, why, and how to test it.
