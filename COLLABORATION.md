@@ -1,5 +1,20 @@
 # **Collaboration Guidelines**
 
+## 🪬 Core Collaboration Rules
+
+1. **Never commit directly to `main`.**
+2. **Always create a feature branch** for your work.
+3. **Name your branch using the scope and your first name** (e.g., `feature/arnel-auth-resource`).
+4. Write **clear PR descriptions**. Explain what changed, why, and how to test it.
+5. **All changes must be submitted via a Pull Request (PR).**
+6. **At least one peer review is required** before approval.
+7. **Only the designated checker may merge PRs into `main`.**
+8. **Announce your PR in the group chat** once it’s ready for review.
+9. **Test your changes thoroughly** and include **manual testing evidence** in your PR.
+10. **Resolve all known issues on your end before submitting your PR**, not after.
+11. **Respect deadlines and communicate early**. If you’re blocked or delayed, inform the team as soon as possible.
+12. **Ask questions if anything is unclear**—collaboration is highly encouraged.
+
 To ensure smooth collaboration and maintain code quality, follow these instructions strictly:
 
 ---
