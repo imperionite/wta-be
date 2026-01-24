@@ -76,6 +76,7 @@ git push origin feature/your-name-booking-api
 - Clearly indicate the resource/task your PR addresses.
 - Attach **2–3 screenshots of successful API calls** (Postman, REST Client, curl, etc.).
 - Failure to include testing evidence may result in PR being returned for revisions.
+- Failure to address first your development environment issues (if you have) result in PR being returned for revisions.
 
 ---
 
