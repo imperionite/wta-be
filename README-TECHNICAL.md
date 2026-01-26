@@ -62,10 +62,10 @@ project/
 
 ```bash
 NODE_ENV=development
-PORT=3000
+PORT=3000 # you can change this locally
 MONGO_URI=connection string from your Mongo Atlas or the provided one
-JWT_SECRET=your_jwt_secret_here_create_your_own
-FRONTEND_URL=http://localhost:5173 # real frontend URL to be used
+JWT_SECRET=your_jwt_secret_here_create_your_own # generate your own secret
+FRONTEND_URL=http://localhost:4123 # real frontend URL to be used
 ```
 
 - `NODE_ENV`: `development`, `production`, `test`
