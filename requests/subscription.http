@@ -1,4 +1,4 @@
-@baseUrl = http://localhost:3000/api/subscriptio
+@baseUrl = http://localhost:3000/api/subscription
 
 ### 1. SUBSCRIBE (Create)
 POST {{baseUrl}}/subscribe
