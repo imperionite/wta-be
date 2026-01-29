@@ -4,7 +4,7 @@
 .env.production.local
 .env.local
 
-.http 
+*.http 
 
 .DS_Store
 .AppleDouble
