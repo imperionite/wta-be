@@ -56,21 +56,15 @@ exports.updateBooking = async (req, res) => {
  */
 exports.cancelBooking = async (req, res) => {
   try {
-    const booking = await Booking.findById(req.params.id);
+    // 1. Change findById to findByIdAndDelete
+    const booking = await Booking.findByIdAndDelete(req.params.id);
+    
     if (!booking) {
       return res.status(404).json({ message: "Booking not found" });
     }
 
-    // Ownership already checked by middleware, but verify status
-    if (booking.status === "cancelled") {
-      return res.status(400).json({ message: "Booking already cancelled" });
-    }
-
-    await Booking.findByIdAndUpdate(req.params.id, {
-      status: "cancelled",
-    });
-
-    res.status(200).json({ message: "Booking cancelled successfully" });
+    // 2. Send a success message
+    res.status(200).json({ message: "Booking deleted permanently" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

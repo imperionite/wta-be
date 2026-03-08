@@ -64,7 +64,7 @@ router
   )
   .delete(
     validateParamId("id"),
-    requireOwnership("Booking"),
+    requireRole(["admin", "user"]), 
     bookingController.cancelBooking,
   );
 
